@@ -7,7 +7,7 @@ var multiply = function () {
       throw {
         name: 'TypeError',
         message: 'add needs numbers'
-      };
+      }
     }
     result *= arguments[i];
   }
