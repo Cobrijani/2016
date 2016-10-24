@@ -3,7 +3,7 @@
   var osoba = function(spec) {
     var that = {};
 
-    that.pretstaviSe = function() { //privilegovana metode, moze da pristupi atributima iz spec
+    that.predstaviSe = function() { //privilegovana metode, moze da pristupi atributima iz spec
       return "Ja se zovem " + spec.ime + " " + spec.prezime;
     };
 
@@ -15,10 +15,9 @@
     prezime: "Markovic"
   });
 
-  console.log(markoMarkovic.pretstaviSe());
+  console.log(markoMarkovic.predstaviSe());
 
   var student = (function () {
-    var brojac = 0;
     return function(spec) {
       //sve sto smo prosledili kao spec su privatni atributi. Zasto?
       var that = osoba(spec); //konstruktor pretka
@@ -27,15 +26,15 @@
 
       that.smer = spec.smer;// javni atribut that objekta koji ce biti vracen iz funkcije
 
-      that.superpretstaviSe = that.pretstaviSe;// super metode koje cemo koristiti
+      that.superpredstaviSe = that.predstaviSe;// super metode koje cemo koristiti
 
       //staticko polje mozemo da dodamo kao atribut funkcije student
       //u ovom slucaju ako ne postoji brojac postavimo ga na 1, inace ga uvecamo za 1
       //staticko polje koje smo ovako postavili je javno
       //kako bismo mogli da napravimo privatno?
-      //var brojac = student.hasOwnProperty('brojac')?(brojac + 1):1;
+      student.brojac += 1;
+      var brojac = student.brojac;
 
-      brojac += 1;
       //broj indeksa je autoinkrement
       var brojIndeksa = brojac;
 
@@ -47,8 +46,8 @@
         return "Moj broj indeksa je " + that.getIndeks() + " studiram na smeru " + spec.smer + " i imam sledece ocene " + getOcene();
       };
 
-      that.pretstaviSe = function () {
-        return  that.superpretstaviSe() + " i " + (studira?"jos uvek studiram":"vise ne studiram");
+      that.predstaviSe = function () {
+        return  that.superpredstaviSe() + " i " + (studira?"jos uvek studiram":"vise ne studiram");
       };
 
       var getOcene = function() { //privatne metode
@@ -69,6 +68,8 @@
 
   }());
   
+  student.brojac = 0;
+
   var peraPeric = student({
     ime: "Pera",
     prezime: "Peric",
@@ -104,7 +105,7 @@
 
   // peraPeric.ocene[2].ocena=10;// Ocene su privatni atribut, mogu da mu pristupe samo privilegovane metode
 
-  console.log(peraPeric.pretstaviSe());
+  console.log(peraPeric.predstaviSe());
   console.log(peraPeric.getCV());
   console.log(markoMitric.getCV());
 

@@ -1,14 +1,14 @@
 (function () { //koristimo IIFE da ne bismo imali globalne varijable
 
   var Osoba = function (spec) { //konstruktor Osoba
-    if(spec){
+    if(spec){ 
       this.ime = spec.ime;
       this.prezime = spec.prezime;
     }
     //this.constructor.prototype.brojac += 1; //staticko svojstvo
   };
 
-  Osoba.prototype.pretstaviSe = function () { //"javna" metode
+  Osoba.prototype.predstaviSe = function () { //"javna" metode
     return "Ja se zovem "+this.ime+" "+this.prezime;
   };
 
@@ -16,7 +16,7 @@
 
   //da ne bismo morali da pamtimo redosle parametar u funkciji, wrapujemo ih u spec objekat
   var markoMarkovic = new Osoba({ime:"Marko", prezime:"Markovic"});
-  console.log(markoMarkovic.pretstaviSe());
+  console.log(markoMarkovic.predstaviSe());
 
   var Student = function(spec){ //konsruktor Student
     // this.ime = spec.ime;
@@ -32,7 +32,7 @@
     return "studiram na smeru "+this.smer+" i imam sledece ocene "+this.getOcene();
   };
 
-  Student.prototype.pretstaviSe = function () {
+  Student.prototype.predstaviSe = function () {
     return "zovem se " + this.ime + " " + this.prezime + " i studiram na smeru "+this.smer;
   };
 
@@ -59,9 +59,9 @@
 
   // peraPeric.ocene[2].ocena=10; Kako da napravimo privatni atribut?
 
-  console.log(peraPeric.constructor.prototype.pretstaviSe.apply(peraPeric)); //poziv super metode
+  console.log(peraPeric.constructor.prototype.predstaviSe.apply(peraPeric)); //poziv super metode
 
-  console.log(peraPeric.pretstaviSe());
+  console.log(peraPeric.predstaviSe());
   console.log(peraPeric.getCV());
   //console.log(peraPeric.brojac);
 }());

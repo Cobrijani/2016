@@ -1,6 +1,6 @@
 (function() { //IIFE
     var osoba = { //napravimo objekat koji cemo koristiti kao prototip
-      pretstaviSe: function() { //"javna" metode
+      predstaviSe: function() { //"javna" metode
         return "Ja se zovem " + this.ime + " " + this.prezime;
       }
     };
@@ -9,7 +9,7 @@
     //za novokreirani objekat postavimo vrednosti
     markoMarkovic.ime = "Marko";
     markoMarkovic.prezime = "Markovic";
-    console.log(markoMarkovic.pretstaviSe());
+    console.log(markoMarkovic.predstaviSe());
 
     //kreiramo objekat student koji kao prototip ima objekat osoba
     var student = Object.create(osoba);
@@ -41,7 +41,7 @@
 
     //peraPeric.ocene[2].ocena=10;// Kako da napravimo privatni atribut?
 
-    console.log(peraPeric.pretstaviSe());
+    console.log(peraPeric.predstaviSe());
     console.log(peraPeric.getCV());
 
 }());
