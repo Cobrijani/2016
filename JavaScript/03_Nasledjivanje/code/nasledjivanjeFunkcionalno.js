@@ -17,56 +17,24 @@
 
   console.log(markoMarkovic.predstaviSe());
 
-  var student = (function () {
-    return function(spec) {
-      //sve sto smo prosledili kao spec su privatni atributi. Zasto?
-      var that = osoba(spec); //konstruktor pretka
-
-      var studira = true; // privatni atribut, zbog closure je vidljiv samo u funkciji
-
-      that.smer = spec.smer;// javni atribut that objekta koji ce biti vracen iz funkcije
-
-      that.superpredstaviSe = that.predstaviSe;// super metode koje cemo koristiti
-
-      //staticko polje mozemo da dodamo kao atribut funkcije student
-      //u ovom slucaju ako ne postoji brojac postavimo ga na 1, inace ga uvecamo za 1
-      //staticko polje koje smo ovako postavili je javno
-      //kako bismo mogli da napravimo privatno?
-      student.brojac += 1;
-      var brojac = student.brojac;
-
-      //broj indeksa je autoinkrement
-      var brojIndeksa = brojac;
-
-      that.getIndeks = function () {
-        return brojIndeksa;
-      };
-
-      that.getCV = function() {//javne metode
-        return "Moj broj indeksa je " + that.getIndeks() + " studiram na smeru " + spec.smer + " i imam sledece ocene " + getOcene();
-      };
-
-      that.predstaviSe = function () {
-        return  that.superpredstaviSe() + " i " + (studira?"jos uvek studiram":"vise ne studiram");
-      };
-
-      var getOcene = function() { //privatne metode
-        var i;
-        var retVal = "";
-        for (i in spec.ocene) {
-          retVal += spec.ocene[i].predmet + ":" + spec.ocene[i].ocena + " ";
-        }
-        return retVal;
-      };
-
-      that.upisiOcenu = function(ocena) {//javna metoda koja menja privatni atribut
-        spec.ocene.push(ocena);
-      };
-
-      return that;
-    };
-
-  }());
+var student = (function(){
+ var brojac = 1;
+ return function(spec) {
+  var that = osoba(spec); //konstruktor pretka
+  var studira = true; // privatni atribut, zbog closure je        // vidljiv samo u funkciji
+  that.smer = spec.smer;// javni atribut that objekta koji 
+          //ce biti vracen iz funkcije
+  that.super_predstaviSe = that.predstaviSe;// super 
+        //metoda koje cemo koristiti
+  brojac += 1;//statičko polje
+  var brojIndeksa = brojac;// broj indeksa je 
+            //autoinkrement
+  that.getIndeks = function () {//javna metoda
+      return brojIndeksa;
+  };
+ return that;
+ }
+}());
   
   student.brojac = 0;
 
