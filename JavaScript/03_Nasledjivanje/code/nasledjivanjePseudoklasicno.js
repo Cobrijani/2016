@@ -5,14 +5,14 @@
       this.ime = spec.ime;
       this.prezime = spec.prezime;
     }
-    //this.constructor.prototype.brojac += 1; //staticko svojstvo
+    this.constructor.prototype.brojac += 1; //staticko svojstvo
   };
 
   Osoba.prototype.predstaviSe = function () { //"javna" metode
     return "Ja se zovem "+this.ime+" "+this.prezime;
   };
 
-  //Osoba.prototype.brojac = 0;//staticko svojstvo u prototype
+  Osoba.prototype.brojac = 0;//staticko svojstvo u prototype
 
   //da ne bismo morali da pamtimo redosle parametar u funkciji, wrapujemo ih u spec objekat
   var markoMarkovic = new Osoba({ime:"Marko", prezime:"Markovic"});
@@ -63,5 +63,5 @@
 
   console.log(peraPeric.predstaviSe());
   console.log(peraPeric.getCV());
-  //console.log(peraPeric.brojac);
+  console.log(peraPeric.brojac);
 }());
