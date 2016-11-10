@@ -23,7 +23,7 @@ fs.readFile('data.txt', function (err, logData) {
       results[letter] = 0;
     }
     
-    results[letter] += parseInt(count);
+    results[letter] += count;
   });
   
   console.log(results);

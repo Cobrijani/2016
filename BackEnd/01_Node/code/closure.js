@@ -12,5 +12,6 @@ function webRequest(request) {
 var req = { id: 1 };
 webRequest(req);
 // simuliranje zahteva
-req.id=2;
-webRequest(req);
+var req1 = {id: 2};
+//req.id=2;
+webRequest(req1);

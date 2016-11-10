@@ -9,6 +9,7 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json());
 router.route('/')
   .get(function(req, res, next) {
+    console.log(items);
     res.send({
       status: 'Items found',
       items: items
@@ -55,3 +56,5 @@ router.route('/:id')
 var app = express()
   .use('/todo', router)
   .listen(3000);
+
+console.log('Server is running on port 3000...')

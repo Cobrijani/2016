@@ -16,3 +16,4 @@ var app = express()
     res.end('Invalid body!');
   })
   .listen(3000);
+console.log('Server is running on port 3000...')
