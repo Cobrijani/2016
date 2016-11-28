@@ -1,6 +1,9 @@
 (function(angular) {
 	var userCtrl = function ($scope, $http) {
-		$scope.user = $http.get('https://api.github.com/users/angular');
+		$http.get('https://api.github.com/users/angular')
+		.then(function (data) {
+			$scope.user = data;
+		});
 	}
 
 	var app = angular.module("app", []);

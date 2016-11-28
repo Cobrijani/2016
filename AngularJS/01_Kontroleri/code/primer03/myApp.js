@@ -8,6 +8,9 @@
 		$scope.weather={};
 		$scope.weather.description = "The weather is cloudy";
 		$scope.weather.temperature = "15 degrees Celsius";
+		$scope.proba = function (temperature) {
+			return temperature + '!!!';
+		}
 	};
 
 

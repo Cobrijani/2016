@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<script src="../lib/angular/angular.js"></script>
+		<script src="primer01a.js"></script>
+	</head>
+	<body ng-app="app">
+		<div ng-controller="blogEntriesCtrl">
+			<h1>Entries</h1>
+			<div>
+				<label for="title">title:
+					<input id="title" ng-model="title"/>
+				</label>
+				<button ng-click="filter()" >filter</button>
+			</div>
+			<div>
+				<button ng-click="changePage(-1)">previous</button>
+				<button ng-click="changePage(1)">next</button>
+				<label for="all">all:
+					<input id="all" type="checkbox" ng-change="filter()" ng-model="all"/>
+				</label>
+				<label for="err">err:
+					<input id="err" type="checkbox" ng-change="filter()" ng-model="err"/>
+				</label>
+			</div>
+			<div ng-repeat="blogEntry in blogEntries">
+				<div>
+					{{ blogEntry.title }}
+				</div>
+				<div>
+					{{ blogEntry.entry }}
+				</div>
+				<div>
+					<button ng-click="delete(blogEntry)">delete</button>
+					<button ng-click="edit(blogEntry)">edit</button>
+				</div>
+			</div>
+			<hr/>
+			<h2>New entry</h2>
+			<table>
+				<tr>
+					<td>title:</td>
+					<td><input type="text" ng-model="blogEntry.title"></td>
+				</tr>
+				<tr>
+					<td>entry:</td>
+					<td><textarea rows="4" cols="50" ng-model="blogEntry.entry"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" aling="center"><button ng-click="save()">submit</button></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
