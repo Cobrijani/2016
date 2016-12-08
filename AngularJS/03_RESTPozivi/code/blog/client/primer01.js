@@ -2,8 +2,8 @@
 	var blogEntriesCtrl = function ($scope, $http) {
 		$scope.blogEntry = {};
 		var loadEntries = function () {
-			$http.get('/api/blogEntries',{params:{title:$scope.title}}).
-			success(function (data, status) {
+			$http.get('/api/blogEntries',{params:{title:$scope.title}})
+			.success(function (data) {
 				$scope.blogEntries = data; 		
 				$scope.blogEntry = {};
 			})
@@ -16,8 +16,8 @@
 			if(!$scope.blogEntry._id){
 				$http.post('/api/blogEntries', $scope.blogEntry)
 				.success(function () {
-					loadEntries();
 					$scope.blogEntry = {};
+					loadEntries();
 				})
 				.error(function (data, status) {
 					console.log('error!',data,status);
@@ -44,7 +44,7 @@
 				});				
 		}
 		$scope.edit = function (blogEntry) {
-			$scope.blogEntry = blogEntry;
+			$scope.blogEntry = angular.copy(blogEntry);
 		} 
 		$scope.filter = function () {
 			loadEntries();

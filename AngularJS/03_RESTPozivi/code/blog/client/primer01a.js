@@ -78,18 +78,18 @@
 	app.config(function($httpProvider) {
 		$httpProvider.defaults.transformResponse.push(prepareResponse);
 		$httpProvider.interceptors.push(function ($q) {
-	        return {
-	            'response': function (response) {
-	                return response;
-	            },
-	            'responseError': function (rejection) {
-	                if(rejection.status === 500) {
-	                    alert('server error!');
-	                }
-	                return $q.reject(rejection);
-	            }
-	        };
-	    });
+		    return {
+		        'response': function (response) {
+		            return response;
+		        },
+		        'responseError': function (rejection) {
+		            if(rejection.status === 500) {
+		                alert('server error!');
+		            }
+		            return $q.reject(rejection);
+		        }
+		    };
+		});
 	});
 	app.controller('blogEntriesCtrl', blogEntriesCtrl);
 }(angular));
